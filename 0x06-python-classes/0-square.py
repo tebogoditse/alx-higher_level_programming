@@ -2,4 +2,6 @@
 
 class Square:
     """Square"""
-    pass
+    def __init__(self):
+        """initialize square attributes"""
+        return None
