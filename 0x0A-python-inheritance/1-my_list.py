@@ -4,7 +4,7 @@
 
 class MyList(list):
     """returns sorted list"""
-    pass
 
     def print_sorted(self):
+        """prints the method"""
         print(sorted(list(self)))
