@@ -15,5 +15,5 @@ def append_after(filename="", search_string="", new_string=""):
             if search_string in line:
                 text += new_string
 
-    with open(filename, "a") as wrt:
+    with open(filename, "w") as wrt:
         wrt.write(text)
