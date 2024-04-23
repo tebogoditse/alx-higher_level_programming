@@ -67,5 +67,6 @@ class Rectangle(Base):
         return area
 
     def display(self):
+        """prints rectangle on stdout"""
         print_rectangle = ('#' * self.width + '\n') * self.height
         print(print_rectangle, end="")
