@@ -70,3 +70,9 @@ class Rectangle(Base):
         """prints rectangle on stdout"""
         print_rectangle = ('#' * self.width + '\n') * self.height
         print(print_rectangle, end="")
+
+    def __str__(self):
+        """overiding __str__ method"""
+        s = f"[{type(self).__name__}]"
+        s1 = f"{s} ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        return s1
