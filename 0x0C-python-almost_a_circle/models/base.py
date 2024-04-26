@@ -50,3 +50,20 @@ class Base:
             dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        name = cls.__name__
+        filename = f"{name}.json"
+
+        try:
+            with open(filename, "r", encoding="UTF-8") as file:
+                text_string = file.read()
+            file = cls.from_json_string(text_string)
+            li_instances = []
+            for i in range(0, len(file)):
+                li_instances.append(cls.create(**file[i]))
+        except:
+            li_instances = []
+
+        return li_instances
