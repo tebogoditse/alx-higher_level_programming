@@ -63,7 +63,7 @@ class Base:
             li_instances = []
             for i in range(0, len(file)):
                 li_instances.append(cls.create(**file[i]))
-        except:
+        except Exception as ex:
             li_instances = []
 
         return li_instances
