@@ -28,9 +28,10 @@ class Base:
         filename = f"{class_name}.json"
         text = []
 
+        if list_objs is not None:
+            for i in range(len(list_objs)):
+                text.append(cls.to_dictionary(list_objs[i]))
         if list_objs is None:
             with open(filename, "w", encoding="UTF-8") as file:
                 file.write(cls.to_json_string(text))
-        elif list_objs is not None:
-            for i in range(len(list_objs)):
-                text.append(cls.to_dictionary(list_objs[i]))
+
