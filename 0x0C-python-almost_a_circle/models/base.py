@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base class"""
 import json
+import csv
 
 
 class Base:
@@ -65,5 +66,44 @@ class Base:
                 li_instances.append(cls.create(**file[i]))
         except Exception as ex:
             li_instances = []
+
+        return li_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        name = cls.__name__
+        filename = f"{name}.csv"
+        text = []
+
+        for i in range(0, len(list_objs)):
+            text.append(cls.to_dictionary(list_objs[i]))
+
+        with open(filename, "w", encoding="UTF-8") as file:
+            if name == "Rectangle":
+                fieldnames = ["id", "width", "height", "x", "y"]
+            if name == "Square":
+                fieldnames = ["id", "size", "x", "y"]
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(text)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        name = cls.__name__
+        filename = f"{name}.csv"
+        li = []
+
+        try:
+            with open(filename, "r", encoding="UTF-8") as file:
+                reader = csv.DictReader(file)
+                for i in reader:
+                    for j in i:
+                        i[j] = int(i[j])
+                    li.append(i)
+            li_instances = []
+            for i in range(0, len(li)):
+                li_instances.append(cls.create(**li[i]))
+        except Exception as ex:
+            li_instances[i]
 
         return li_instances
