@@ -1,0 +1,9 @@
+-- Lists all genres in the database hbtn_0d_tvshows_rate by their rating.
+SELECT name, SUM(rate) AS rating
+FROM tv_genres
+	INNER JOIN tv_show_genres
+	ON show_genres.genre_id = tv_genres.id
+       	INNER JOIN tv_show_ratings
+       	ON tv_show_ratings.show_id = show_genres.show_id
+GROUP BY name
+ORDER BY rating DESC;
