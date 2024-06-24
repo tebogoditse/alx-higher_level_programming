@@ -2,10 +2,8 @@
 
 const process = require('process');
 
-const args = process.argv.length;
-
-if (args === 2) {
+if (!process.argv[2]) {
   console.log('No argument');
-} else if (args === 3) {
+} else if (process.argv[2]) {
   console.log(process.argv[2]);
 }
