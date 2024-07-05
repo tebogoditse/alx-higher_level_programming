@@ -16,4 +16,4 @@ if __name__ == "__main__":
     req = Request(url, data)
 
     with urlopen(req) as res:
-        print(res.read().decode("uft-8"))
+        print(res.read().decode("uft-8", "replace"))
