@@ -11,7 +11,7 @@ from urllib.parse import urlencode
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    value = {"Your email is: " sys.argv[2]}
+    value = {"Your email is: {}".format(sys.argv[2])}
     data = urlencode(value).encode("ascii")
     req = Request(url, data)
 
