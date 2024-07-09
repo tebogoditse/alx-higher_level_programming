@@ -3,6 +3,7 @@
 
 
 def find_peak(list_of_integers):
+    """find_peak"""
     max_i = None
     for i in list_of_integers:
         if max_i is None or max_i < i:
